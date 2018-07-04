@@ -3,7 +3,7 @@ RUN addgroup -g 10001 kubia && adduser -D -u 10001 -G kubia kubia
 COPY . /go/src/app
 WORKDIR /go/src/app
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm64 \
-    go build -a -installsuffix cgo -ldflags '-s -w' -o /service
+      go build -a -installsuffix cgo -ldflags '-s -w' -o /service
 
 FROM scratch
 COPY --from=build-env /etc/passwd /etc/passwd
