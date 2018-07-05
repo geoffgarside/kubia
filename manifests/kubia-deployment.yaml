@@ -1,12 +1,13 @@
 ---
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: kubia
 spec:
   replicas: 3
   selector:
-    app: kubia
+    matchLabels:
+      app: kubia
   template:
     metadata:
       labels:
@@ -17,3 +18,7 @@ spec:
         image: geoffgarside/kubia:0.0.2
         ports:
         - containerPort: 8080
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi

@@ -15,6 +15,11 @@ spec:
     spec:
       containers:
       - name: kubia
-        image: geoffgarside/kubia:0.0.1
+        image: geoffgarside/kubia:0.0.2
         ports:
         - containerPort: 8080
+        resources:
+          limits:
+            cpu: 100m
+            memory: 50Mi
+
