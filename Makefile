@@ -1,4 +1,4 @@
-RELEASE		?= 0.0.1
+RELEASE		?= $(shell git describe --first-parent HEAD)
 COMMIT		?= $(shell git rev-parse --short HEAD)
 BUILD_TIME	?= $(shell date -u '+%Y-%m-%d_%H:%M:%S')
 
