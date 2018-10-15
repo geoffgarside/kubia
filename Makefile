@@ -2,8 +2,10 @@ RELEASE		?= 0.0.1
 COMMIT		?= $(shell git rev-parse --short HEAD)
 BUILD_TIME	?= $(shell date -u '+%Y-%m-%d_%H:%M:%S')
 
-.PHONY: all
+.PHONY: all build-amd64 build-arm64
 all: batch-job kubia kubia-pet-set kubia-unhealthy ssd-monitor
+build-amd64: batch-job-amd64 kubia-amd64 kubia-pet-set-amd64 kubia-unhealthy-amd64 ssd-monitor-amd64
+build-arm64: batch-job-arm64 kubia-arm64 kubia-pet-set-arm64 kubia-unhealthy-arm64 ssd-monitor-arm64
 
 batch-job-amd64:
 	docker build -f dockerfiles/batch-job/Dockerfile -t geoffgarside/batch-job-amd64:$(RELEASE) cmd/batch-job
